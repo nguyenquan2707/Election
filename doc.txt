@@ -1,2 +1,37 @@
 truffle migrate --reset
 App change code to blockchain, and also using same previous account
+
+truffle console:
+go to truffle conlose for development
+
+---------------
+Election.deployed().then((instance) => {app = instance}):
+
+- Election: contract
+- deployed(): deploy Election contract
+- then: promise
+- instance: is contract after deploy and assign to "app"
+
+---------------------------
+app.vote(1) : call vote function in contract
+
+---------------------------
+web3.eth.getAccounts().then((result) => {account = result[1]})
+- web3: object from metamask or ganache
+- eth: object in web3
+- getAccounts() : this function return list account from metamask or ganache
+- then: promise
+- result: list accounts
+- result[1] : account at 1 position and assign to account.
+
+-----------------------------
+app.vote(1, {from: account}) 
+
+1: argument of vote function
+account: meta data in solidity
+
+-----------------------------
+web3.eth.getAccounts().then((result) => result[3])
+
+result: '0x94A8d2C111545993EEe9B6A9333a7f57263BFF7d'
+ 
