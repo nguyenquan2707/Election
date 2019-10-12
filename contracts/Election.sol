@@ -1,26 +1,51 @@
 pragma solidity ^0.5.8;
 
 contract Election {
-    //Model a candidate
+    // Model a Candidate
     struct Candidate {
         uint id;
         string name;
-        uint count;
+        uint voteCount;
     }
-    //Store candidate
-    //Fetch candidate
-    //Store candidate count
+
+    // Store accounts that have voted
+    mapping(address => bool) public voters;
+    // Store Candidates
+    // Fetch Candidate
     mapping(uint => Candidate) public candidates;
-    //count
-    uint public count;
-    //Contructor
-    constructor() public {
-        addCandidate("Candidate 1");
-        addCandidate("Candidate 2");
-        addCandidate("Candidate 3");
+    // Store Candidates Count
+    uint public candidatesCount;
+
+    // voted event
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
+    constructor () public {
+        addCandidate("Nguyễn Việt Quân");
+        addCandidate("Nguyễn Tuấn Long");
+        addCandidate("Nguyễn Trần Trung Khải");
     }
+
     function addCandidate (string memory _name) private {
-        count ++;
-        candidates[count] = Candidate(count, _name, 0);
+        candidatesCount ++;
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+    }
+
+    function vote (uint _candidateId) public {
+        // require that they haven't voted before
+        require(!voters[msg.sender]);
+
+        // require a valid candidate
+        require(_candidateId > 0 && _candidateId <= candidatesCount);
+
+        // record that voter has voted
+        voters[msg.sender] = true;
+
+        // update candidate vote Count
+        candidates[_candidateId].voteCount ++;
+
+        // trigger voted event
+        emit votedEvent(_candidateId);
     }
 }
