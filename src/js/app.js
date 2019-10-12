@@ -45,7 +45,7 @@ App = {
         fromBlock: 0,
         toBlock: 'latest'
       }).watch(function(error, event) {
-        console.log("event triggered", event)
+        console.log("event triggered, ", event)
         // Reload when a new vote is recorded
         App.render();
       });
@@ -103,14 +103,14 @@ App = {
       loader.hide();
       content.show();
     }).catch(function(error) {
-      console.warn(error);
+     // console.warn(error);
     });
   },
 
   castVote: function() {
-    var candidateId = $('#candidatesSelect').val();
+    var candidateId = $('#candidatesSelect').val(); // = 1,  <option value="1">Nguyễn Việt Quân</option>
     App.contracts.Election.deployed().then(function(instance) {
-      return instance.vote(candidateId, { from: App.account });
+      return instance.vote(candidateId, { from: App.account }); // candidateId = 1, 
     }).then(function(result) {
       // Wait for votes to update
       $("#content").hide();

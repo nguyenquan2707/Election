@@ -17,9 +17,7 @@ contract Election {
     uint public candidatesCount;
 
     // voted event
-    event votedEvent (
-        uint indexed _candidateId
-    );
+    event votedEvent (uint indexed _candidateId);
 
     constructor () public {
         addCandidate("Nguyễn Việt Quân");
@@ -34,7 +32,7 @@ contract Election {
 
     function vote (uint _candidateId) public {
         // require that they haven't voted before
-        require(!voters[msg.sender]);
+        require(!voters[msg.sender]); // votes[msg.sender] = false as default
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
