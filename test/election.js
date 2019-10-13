@@ -69,6 +69,14 @@ contract("Election", function(accounts) {
        event: 'votedEvent',
        args: [Result] } ] }
             */
+        //test event
+        assert.equal(receipt.logs.length, 1, "an event was trigger");
+        assert.equal(receipt.logs[0].event, "votedEvent", "check event Name");
+        assert.equal(receipt.logs[0].args._candidateId.toNumber(), 1, "check argument of event");
+        assert.equal(receipt.logs[0].args._candidateId1, undefined, "no have _candidate1");
+        assert.equal(receipt.logs[0].type, "mined", "check type consesus");
+        assert.equal(receipt.logs[0].logIndex, 0, "logIndex");
+        assert.equal(receipt.logs[0].transactionIndex, 0, "TransactionIndex");
             return candidates.voters[accounts[0]]; // add account 0 to voters map 
         }).then((voted) => {
             return candidates.candidates(1); // return candidate 1
