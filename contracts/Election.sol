@@ -17,7 +17,8 @@ contract Election {
     uint public candidatesCount;
 
     // voted event
-    event votedEvent (uint indexed _candidateId);
+    //event votedEvent (uint indexed _candidateId);
+    event votedEvent ();
 
     constructor () public {
         addCandidate("Nguyễn Việt Quân");
@@ -45,7 +46,8 @@ contract Election {
         candidates[_candidateId].voteCount ++;
 
         // trigger voted event
-        emit votedEvent(_candidateId);
+        //emit votedEvent(_candidateId);
+        emit votedEvent(); // still run
     }
 
     //get account

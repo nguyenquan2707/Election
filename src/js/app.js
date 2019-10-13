@@ -45,9 +45,10 @@ App = {
       // https://github.com/MetaMask/metamask-extension/issues/2393
       instance.votedEvent({} , { // {}: first argument is filter, and second one is meta data for event
         fromBlock: 0,
-        toBlock: 'latest' // subcribe event from block 0 to latest block
+        toBlock: 'latest' // subscribe event from block 0 to latest block
       }).watch(function(error, event) {
         console.log("event triggered, ", event)
+        console.log("We are just subscribe the event, and event will render page for us");
         // Reload when a new vote is recorded
         App.render();
       });
