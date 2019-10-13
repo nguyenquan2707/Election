@@ -36,6 +36,7 @@ contract Election {
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount);
+        /*in case, the require is false, then throw exception, and gas is use only to this required, not all the vote function */
 
         // record that voter has voted
         voters[msg.sender] = true;
@@ -45,5 +46,10 @@ contract Election {
 
         // trigger voted event
         emit votedEvent(_candidateId);
+    }
+
+    //get account
+    function getAccount() public view returns (address){
+        return msg.sender;
     }
 }
