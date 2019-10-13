@@ -105,5 +105,20 @@ contract("Election", function(accounts) {
             let vote = candidate.voteCount;
             assert.equal(vote, 0, "Candidate 2 is not receice any votes");
         })
+    });
+
+    it('Test exception for doublt vote', function() {
+        return Election.deployed().then((instance) => {
+            candidates = instance;
+            return candidates.vote(2, {from: accounts[7]});
+        }).then((receipt) => {
+            return candidates.candidates(2);
+        }).then((candidate) => {
+            let vote = candidate.voteCount;
+            assert.equal(vote, 1, "Candidate 2 have 1 vote");
+            return candidates.vote(2, {from: accounts[7]}) // if account 7 vote for Candidate 1, then error
+        }).then(assert.fail).catch((error) => {
+            assert(error.message.indexOf('revert') >= 0, "Error message");
+        })
     })
 });
