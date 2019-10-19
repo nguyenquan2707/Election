@@ -30,4 +30,4 @@ Step 5. Configure Metamask
 Login to Metamask, choose RPC custom, in "New RPC URL" you past "localhost:7545"
 
 Step 6. Run the Front End Application
-$ npm run dev and Visit this URL in your browser: http://localhost:3000, Done 
+$ npm run dev and Visit this URL in your browser: http://localhost:3000 (open in Google Chrome), Done 
