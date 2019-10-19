@@ -27,7 +27,7 @@ Step 4. Compile & Deploy Election Smart Contract
 $ truffle migrate --reset You must migrate the election smart contract each time your restart ganache.
 
 Step 5. Configure Metamask
-Login to Metamask, choose RPC custom, in "New RPC URL" you past "localhost:8545"
+Login to Metamask, choose RPC custom, in "New RPC URL" you past "localhost:7545"
 
 Step 6. Run the Front End Application
 $ npm run dev and Visit this URL in your browser: http://localhost:3000, Done 
