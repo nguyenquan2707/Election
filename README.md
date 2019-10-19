@@ -19,6 +19,7 @@ git clone https://github.com/0x27b68e/Election.git
 Step 2. Install dependencies
 $ cd election
 $ npm install
+
 Step 3. Start Ganache
 Open the Ganache GUI client that you downloaded and installed. This will start your local blockchain instance.
 
