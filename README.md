@@ -6,9 +6,13 @@ Follow the steps below to download, install, and run this project.
 Dependencies
 
 NPM: https://nodejs.org
+
 Truffle: https://github.com/trufflesuite/truffle
+
 Ganache: http://truffleframework.com/ganache/
+
 Metamask: https://metamask.io/
+
 Step 1. Clone the project
 git clone https://github.com/0x27b68e/Election.git
 
